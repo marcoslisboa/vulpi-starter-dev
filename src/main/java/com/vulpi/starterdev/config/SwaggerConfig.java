@@ -21,9 +21,9 @@ public class SwaggerConfig {
             .build()
             .apiInfo(
                 new ApiInfoBuilder()
-                    .version("1.0.0")
+                    .version("2.0.0")
                     .title("Vulpi Starter Dev API")
-                    .description("Documentation API v1.0")
+                    .description("Documentation API v2.0")
                     .contact(new Contact("Development Team", "", "contact@vulpi.com.br"))
                     .build()
             );
