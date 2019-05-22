@@ -1,0 +1,6 @@
+#!/bin/bash
+echo Compile Application...
+./mvnw clean install
+
+echo Vulpi Starter - Starting Application...
+sudo docker-compose up --build
