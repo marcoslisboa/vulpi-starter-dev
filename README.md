@@ -63,9 +63,24 @@ docker images
 ./docker-compose-redeploy.sh
 ```
 
-## Deploy Google App Engine 
+## Deploy Google App Engine
+ 
+#### Install [Google Cloud SDK](https://cloud.google.com/sdk/?hl=pt-br)
 ```bash
-mvn appengine:deploy
+
+curl https://sdk.cloud.google.com | bash
+
+``` 
+
+#### Login 
+```bash
+./google-cloud-sdk/bin/gcloud init
+``` 
+ 
+#### Deploy
+
+```bash
+./mvnw appengine:deploy
 ```
 
 ## Deploy Google Kubernetes Engine 
