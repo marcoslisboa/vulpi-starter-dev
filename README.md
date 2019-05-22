@@ -67,9 +67,7 @@ docker images
  
 #### Install [Google Cloud SDK](https://cloud.google.com/sdk/?hl=pt-br)
 ```bash
-
 curl https://sdk.cloud.google.com | bash
-
 ``` 
 
 #### Login 
@@ -83,71 +81,22 @@ curl https://sdk.cloud.google.com | bash
 ./mvnw appengine:deploy
 ```
 
-## Deploy Google Kubernetes Engine 
+#### Inspect Deploy
 
-* Create [Google Cloud](https://cloud.google.com) Acoount
-* Access Cloud Shell 
-* Clone this Repository
-
-#### Register and Push Docker Image
 ```bash
-./mvnw com.google.cloud.tools:jib-maven-plugin:build -Dimage=gcr.io/$GOOGLE_CLOUD_PROJECT/vulpi-dev-starter:v1
+gcloud app versions describe -s default 20190522t043703
 ```
 
-#### Create Kubernetes Cluster
+#### Inspect Log
+
 ```bash
-gcloud container clusters create dev-starter-cluster \
-  --num-nodes 3 \
-  --machine-type n1-standard-1 \
-  --zone us-central1-a
+gcloud app logs tail -s default
 ```
 
-#### Deploy Docker Image into Cluster
-```bash
-kubectl run vulpi-dev-starter \
-  --image=gcr.io/$GOOGLE_CLOUD_PROJECT/vulpi-dev-starter:v1 \
-  --port=8080
-```
+#### Open Web Browser
 
-#### List Deployments
 ```bash
-kubectl get deployments
-```
-
-#### List Pods
-```bash
-kubectl get pods
-```
-
-#### Scale
-```bash
-kubectl scale deployment vulpi-dev-starter --replicas=4
-```
-
-#### Allow Trafic (Expose Service)
-```bash
-kubectl expose deployment vulpi-dev-starter --type=LoadBalancer
-```
-
-#### List Service
-```bash
-kubectl get services
-```
-
-#### Release Docker Image
-```bash
-./mvnw com.google.cloud.tools:jib-maven-plugin:build -Dimage=gcr.io/$GOOGLE_CLOUD_PROJECT/vulpi-dev-starter:v2
-```
-
-#### Deploy Release Image
-```bash
-kubectl set image deployment/vulpi-dev-starter \
-  vulpi-dev-starter=gcr.io/$GOOGLE_CLOUD_PROJECT/vulpi-dev-starter:v2
-```
-
-#### Roll back Deployments
-```bash
-kubectl rollout undo deployment/vulpi-dev-starter
+gcloud app browse
 ```
 
 
