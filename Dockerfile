@@ -1,7 +1,7 @@
 # Alpine because it's lighter
 FROM openjdk:8-jdk-alpine
 VOLUME /tmp
-MAINTAINER Marcos Lisboa <marcoslisboa@frameworksystem.com>
+MAINTAINER Marcos Lisboa <marcoslisboadev@gmail.com>
 RUN apk add --no-cache tzdata
 
 # Set ENV variables
