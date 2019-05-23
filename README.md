@@ -84,7 +84,7 @@ curl https://sdk.cloud.google.com | bash
 #### Inspect Deploy
 
 ```bash
-gcloud app versions describe -s default 20190522t043703
+gcloud app versions describe -s default <your_version_id>
 ```
 
 #### Inspect Log
